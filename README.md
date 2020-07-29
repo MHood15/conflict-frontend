@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Accessing the memes
+
+I assume you've already forked and cloned this repository. NPM run start the app. Click "This is depressing, show me something else" and the memes will appear. 
 
 ## Available Scripts
 
