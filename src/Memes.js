@@ -3,7 +3,7 @@ import React, {
 } from 'react'
 import Map from './Map';
 import Button from 'react-bootstrap/Button';
-import {Container, Col, Row, Image} from 'react-bootstrap';
+import {Container, Col, Image} from 'react-bootstrap';
 
 function Memes(props) {
     const [state, setState] = useState({
@@ -16,7 +16,7 @@ function Memes(props) {
                 <div>
                     <Container>
                         <Col className="justify-content-md-center">
-                            <h2 className="memeTitle">20 memes to remember what it was like when WW3 was our only problem</h2>
+                            <h2 className="memeTitle">20 memes to remember what it was like when WWIII was our only problem</h2>
                         </Col>
 
                         <Col className="justify-content-md-center">

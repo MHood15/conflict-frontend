@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo, useState, useEffect } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -9,6 +9,9 @@ import ViewInfo from './ViewInfo';
 import {Container, Col, Row} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Memes from './Memes';
+import Help from './Help';
+import ReactTooltip from "react-tooltip";
+
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
@@ -46,57 +49,116 @@ const markersWorsening = [
 ];
   
 
-class Map extends React.Component {
-    constructor(props){
-        super(props)
-        this.state={
-            viewInfo: false,
-            viewMemes: false,
-            name: "",
-            conflicts: []
-        }
-    }
+const Map = ({ setTooltipContent }) => {
+    const [state, setState] = useState({
+        viewInfo: false,
+        viewMemes: false,
+        viewHelp: false,
+        name: "",
+        conflicts: [], 
+        loaded: true
+    })
+
+    const [content, setContent] = useState("");
     
-    async componentDidMount() {
-        const response = await fetch('/conflicts');
-        const body = await response.json();
-        this.setState({ conflicts: body });
-    }
+
+    useEffect(() => {
+        async function componentDidMount() {
+            const response = await fetch('/conflicts');
+            const body = await response.json();
+            setState({ 
+                ...state,
+                conflicts: body 
+            });
+        }
+        componentDidMount();
+    }, [])
 
 
-  render() {
     return (
     <div>
-        {this.state.viewMemes ? <Memes /> :
-        this.state.viewInfo ? <ViewInfo nameGiven={this.state.name} conflicts = {this.state.conflicts}/> :
+        {state.viewMemes ? <Memes /> :
+        state.viewHelp ? <Help setState={setState} state={state}/> :
+        state.viewInfo ? <ViewInfo setState={setState} state={state} nameGiven={state.name} conflicts = {state.conflicts}/> : 
             <div>
-                <ComposableMap className="map"  projectionConfig={{scale: 175}}>
+                <ComposableMap className="map"  data-tip="" projectionConfig={{scale: 175}}>
                     <Geographies geography={geoUrl}>
                         {({ geographies }) =>
                         geographies.map(geo => (
                             <Geography
-                            key={geo.rsmKey}
-                            geography={geo}
-                            fill="#000000"
-                            stroke="darkgray"
+                                key={geo.rsmKey}
+                                geography={geo}
+                                fill="#000000"
+                                stroke="darkgray"
+                                
                             />
                         ))
                         }
                     </Geographies>
 
                     {markersUnchanging.map(({ name, coordinates}) => (
-                        <Marker key={name} coordinates={coordinates} onClick={()=>this.setState({viewInfo: true, name: name})}>
+                        <Marker data-tip="" className="pointer" key={name} coordinates={coordinates} onClick={()=>{
+                                setContent("");
+                                setState({...state, viewInfo: true, name: name});
+                            }}
+                            onMouseEnter={() => {
+                                setContent(`${name}`);
+                            }}
+                            onMouseLeave={() => {
+                                setContent("");
+                            }}
+                            style={{
+                                default: {
+                                fill: "#D6D6DA",
+                                outline: "none"
+                                },
+                                hover: {
+                                fill: "#F53",
+                                outline: "none"
+                                },
+                                pressed: {
+                                fill: "#E42",
+                                outline: "none"
+                                }
+                            }}
+                        >
                         <circle r={3} fill="#FFA500" />
                         </Marker>
                     ))}
 
                     {markersWorsening.map(({ name, coordinates}) => (
-                        <Marker key={name} coordinates={coordinates} onClick={()=>this.setState({viewInfo: true, name: name})}>
+                        <Marker data-tip="" key={name} className="pointer" coordinates={coordinates} onClick={()=>{
+                            setContent("");
+                            setState({...state, viewInfo: true, name: name});
+                        }}
+                            onMouseEnter={() => {
+                                setContent(`${name}`);
+                            }}
+                            onMouseLeave={() => {
+                                setContent("");
+                            }}
+                            style={{
+                                default: {
+                                fill: "#D6D6DA",
+                                outline: "none"
+                                },
+                                hover: {
+                                fill: "#F53",
+                                outline: "none"
+                                },
+                                pressed: {
+                                fill: "#E42",
+                                outline: "none"
+                                }
+                            }}
+                        >
                         <circle r={3} fill="#F00" />
                         </Marker>
                     ))}
 
                 </ComposableMap>
+                <ReactTooltip>{content}</ReactTooltip>
+
 
                 <Container id='legend'>
                     <Row className="justify-content-md-center">
@@ -122,15 +184,16 @@ class Map extends React.Component {
                     </Row>
                 </Container>
 
-                <Button className='memeButton' variant='dark' size='lg' onClick={()=>this.setState({viewMemes: true})}>This is depressing, show me something else</Button>
+                <Button className='helpButton' variant='dark' size='lg' onClick={()=>setState({...state, viewHelp: true})}>This is depressing, how can I help?</Button>
+                <Button className='memeButton' variant='dark' size='lg' onClick={()=>setState({...state, viewMemes: true})}>This is depressing, show me something else</Button>
             </div>
         
     }
     </div>
     
     );
-  };
+
  
 }
 
-export default Map;
+export default memo(Map);
