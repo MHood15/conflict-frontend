@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Map from './Map';
+
+//Ngrok: ngrok http 3000 -host-header="localhost:8080" 
+
 
 
 function App() {

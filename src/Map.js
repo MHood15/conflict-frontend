@@ -185,7 +185,7 @@ const Map = ({ setTooltipContent }) => {
                 </Container>
 
                 <Button className='helpButton' variant='dark' size='lg' onClick={()=>setState({...state, viewHelp: true})}>This is depressing, how can I help?</Button>
-                <Button className='memeButton' variant='dark' size='lg' onClick={()=>setState({...state, viewMemes: true})}>This is depressing, show me something else</Button>
+                <Button className='memeButton' variant='dark' size='lg' onClick={()=>setState({...state, viewMemes: true})}>This is depressing, lift my spirits.</Button>
             </div>
         
     }

@@ -201,19 +201,19 @@ class Help extends React.Component {
                     <Col className="donateDiv" md={7}>
                         <h3>Donate Now</h3>
                         <Col>
-                            <a className="donate" href="https://www.savethechildren.org/us/what-we-do/where-we-work/africa/mali" target="_blank">Help children in Mali</a>
+                            <a className="donate" href="https://www.savethechildren.org/us/what-we-do/where-we-work/africa/mali" target="_blank" rel="noopener noreferrer">Help children in Mali</a>
                         </Col>
                         <Col>
-                            <a className="donate" href="https://hhrd.org/new/kashmir" target="_blank">Contribute to the Kashmir Relief Fund</a>
+                            <a className="donate" href="https://hhrd.org/new/kashmir" target="_blank" rel="noopener noreferrer">Contribute to the Kashmir Relief Fund</a>
                         </Col>
                         <Col>
-                            <a className="donate" href="https://donate.unhcr.org/int/venezuela/~my-donation#" target="_blank">Support Venezuelan families</a>
+                            <a className="donate" href="https://donate.unhcr.org/int/venezuela/~my-donation#" target="_blank" rel="noopener noreferrer">Support Venezuelan families</a>
                         </Col>
                         <Col>
-                            <a className="donate" href="https://www.rescue.org/country/yemen" target="_blank">Provide food and medicine to Yemen</a> 
+                            <a className="donate" href="https://www.rescue.org/country/yemen" target="_blank" rel="noopener noreferrer">Provide food and medicine to Yemen</a> 
                         </Col>
                         <Col>
-                            <a className="donate" href="https://www.unicefusa.org/" target="_blank">Learn more through UNICEF</a>
+                            <a className="donate" href="https://www.unicefusa.org/" target="_blank" rel="noopener noreferrer">Learn more through UNICEF</a>
                         </Col>           
                     </Col>
 
@@ -240,27 +240,27 @@ class Help extends React.Component {
                         <h3>If you want more information about joining, please click below:</h3>
                         <Row>
                             <Col>
-                                <a className="join" href="https://www.airforce.com/apply-now" target="_blank">
+                                <a className="join" href="https://www.airforce.com/apply-now" target="_blank" rel="noopener noreferrer">
                                         <Image className="joinPic" src="https://vid.alarabiya.net/images/2020/01/07/807215bc-c5ea-409a-80db-6a85cca469c8/807215bc-c5ea-409a-80db-6a85cca469c8_16x9_600x338.jpg" />
                                         <div>U.S. Air Force</div>
                                     </a>
                             </Col>
                             <Col>
-                                <a className="join" href="https://www.goarmy.com/learn.html" target="_blank">
+                                <a className="join" href="https://www.goarmy.com/learn.html" target="_blank" rel="noopener noreferrer">
                                     <Image className="joinPic" src="https://www.armytimes.com/resizer/_2-zKlIbuCm-Rf7gtJBTwFVN56o=/1200x0/filters:quality(100)/arc-anglerfish-arc2-prod-mco.s3.amazonaws.com/public/GCSPIAJALFEHBFXNZPMOJ5N26A.jpg" />
                                     <div>U.S. Army</div>
                                 </a>
                             </Col>
                             <Col>
-                                <a className="join" href="https://rmi.marines.com/request-information" target="_blank">
+                                <a className="join" href="https://www.navy.com/start?activity=1228855" target="_blank" rel="noopener noreferrer">
                                 <Image className="joinPic" src="https://images03.military.com/sites/default/files/media/holidays/navy-birthday/2015/10/amphibiousassaultshipusskearsarge.jpg" />
-                                    <div>U.S. Marines</div>
+                                    <div>U.S. Navy</div>
                                 </a>
                             </Col>
                             <Col>
-                                <a className="join" href="https://www.navy.com/start?activity=1228855" target="_blank">
+                                <a className="join" href="https://rmi.marines.com/request-information" target="_blank" rel="noopener noreferrer">
                                 <Image className="joinPic" src="https://nypost.com/wp-content/uploads/sites/2/2019/02/190214-cobra-blood-50.jpg?quality=80&strip=all" />
-                                    <div>U.S. Navy</div>
+                                    <div>U.S. Marines</div>
                                 </a>
                             </Col>
                         </Row>

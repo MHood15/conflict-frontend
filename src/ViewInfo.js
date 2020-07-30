@@ -1,6 +1,4 @@
-import React, {
-    useState
-} from 'react'
+import React from 'react'
 import Button from 'react-bootstrap/Button';
 import {Container, Col, Row, Image} from 'react-bootstrap';
 
